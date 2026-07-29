@@ -2,6 +2,10 @@
 
 A responsive, editorial car-marketplace experience implemented from the supplied Figma reference. The application combines a warm vintage art direction with a performant interactive 3D hero, reusable React components, responsive page compositions, functional inventory controls, and an accessible enquiry flow.
 
+**Live site:** [cars-classic-autotrader-3d.netlify.app](https://cars-classic-autotrader-3d.netlify.app/)
+
+**GitHub:** [rasinenitharunchowdary-cmyk/cars-classic-autotrader](https://github.com/rasinenitharunchowdary-cmyk/cars-classic-autotrader)
+
 ## Included screens
 
 - Home / collection landing page
