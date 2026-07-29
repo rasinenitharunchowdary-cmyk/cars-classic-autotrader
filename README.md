@@ -55,6 +55,11 @@ npm test
 npm run build
 ```
 
+## Netlify deployment
+
+The repository includes `netlify.toml` with the production build command, `dist` publish directory,
+Node.js 22 runtime, and the history fallback required for direct React Router URLs.
+
 ## Project structure
 
 ```text
