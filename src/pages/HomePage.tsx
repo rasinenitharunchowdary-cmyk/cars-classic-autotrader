@@ -94,7 +94,19 @@ export function HomePage() {
             <span>Interactive 3D</span>
           </div>
           {renderInteractiveScene ? (
-            <Suspense fallback={<div className="home-hero__scene-loading" aria-hidden="true" />}>
+            <Suspense
+              fallback={(
+                <>
+                  <div className="home-hero__scene-loading" aria-hidden="true" />
+                  <img
+                    className="home-hero__static-car home-hero__static-car--visible"
+                    src="/assets/images/hero-car.png"
+                    alt="Charcoal 1960s grand touring coupe"
+                    fetchPriority="high"
+                  />
+                </>
+              )}
+            >
               <HeroScene carColor="#2c2c29" accentColor="#a53a31" ariaLabel="Interactive three-dimensional charcoal classic grand touring coupe" />
             </Suspense>
           ) : (
@@ -102,6 +114,7 @@ export function HomePage() {
               className="home-hero__static-car home-hero__static-car--visible"
               src="/assets/images/hero-car.png"
               alt="Charcoal 1960s grand touring coupe"
+              fetchPriority="high"
             />
           )}
           <div className="home-hero__stage-caption">
