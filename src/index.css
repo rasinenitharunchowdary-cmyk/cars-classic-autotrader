@@ -1,0 +1,162 @@
+@font-face {
+  font-family: 'Archive Sans';
+  src: url('/assets/fonts/archive-regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Archive Display';
+  src: url('/assets/fonts/archive-display.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500 900;
+  font-display: swap;
+}
+
+:root {
+  font-family: 'Archive Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #22221f;
+  background: #e9e6dd;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --ink: #22221f;
+  --ink-soft: #3d3c36;
+  --muted: #77766e;
+  --paper: #f2f0e8;
+  --paper-deep: #e9e6dd;
+  --line: rgba(34, 34, 31, 0.18);
+  --line-strong: rgba(34, 34, 31, 0.36);
+  --red: #a53a31;
+  --green: #31493d;
+  --gold: #b69255;
+  --water: #9bc5d3;
+  --white: #fffef9;
+  --page-gutter: clamp(1rem, 3.2vw, 3.75rem);
+  --header-height: 5rem;
+  --radius-sm: 0.55rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.75rem;
+  --shadow-soft: 0 18px 60px rgba(25, 24, 21, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper-deep);
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 4%, rgba(255, 255, 255, 0.58), transparent 28rem),
+    var(--paper);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.12;
+  content: '';
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(18, 18, 16, 0.025) 3px),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(18, 18, 16, 0.018) 4px);
+  mix-blend-mode: multiply;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+img,
+svg,
+canvas {
+  display: block;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dd {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+strong {
+  font-family: 'Archive Display', 'Arial Black', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  outline: none;
+}
+
+:where(button, a, input, select, textarea):focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
