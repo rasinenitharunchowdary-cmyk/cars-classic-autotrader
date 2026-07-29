@@ -19,7 +19,7 @@ Object.defineProperty(globalThis, 'IntersectionObserver', {
 
 Object.defineProperty(window, 'matchMedia', {
   value: (query: string) => ({
-    matches: false,
+    matches: query.includes('min-width: 641px'),
     media: query,
     onchange: null,
     addEventListener: () => undefined,

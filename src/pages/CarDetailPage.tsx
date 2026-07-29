@@ -16,10 +16,7 @@ export function CarDetailPage() {
 
   if (!car) return <NotFoundPage />
 
-  const galleryCars = [
-    car,
-    ...cars.filter((item) => item.slug !== car.slug).slice(0, 4),
-  ]
+  const galleryFrames = Array.from({ length: 5 }, (_, index) => index)
 
   const specs = [
     ['Make', car.make],
@@ -44,9 +41,9 @@ export function CarDetailPage() {
       </section>
 
       <section className="detail-gallery" aria-label={`${car.title} photo gallery`}>
-        {galleryCars.map((imageCar, index) => (
-          <Reveal className={`detail-gallery__image detail-gallery__image--${index + 1}`} key={`${imageCar.slug}-${index}`} delay={index * 0.04}>
-            <img src={imageCar.image} alt={index === 0 ? car.title : `${car.title} detail view ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} />
+        {galleryFrames.map((index) => (
+          <Reveal className={`detail-gallery__image detail-gallery__image--${index + 1}`} key={`${car.slug}-${index}`} delay={index * 0.04}>
+            <img src={car.image} alt={index === 0 ? car.title : `${car.title} detail view ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} />
             {index === 0 && <span className="detail-gallery__count">01 / 05</span>}
           </Reveal>
         ))}

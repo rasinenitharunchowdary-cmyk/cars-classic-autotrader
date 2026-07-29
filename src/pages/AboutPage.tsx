@@ -11,7 +11,7 @@ export function AboutPage() {
 
   return (
     <motion.main className="page page--about" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      <PageIntro eyebrow="Independent since 2019" title={<>Who<br />are we?</>} />
+      <PageIntro eyebrow="Independent since 2019" title={<>Who <br />are we?</>} />
       <section className="about-editorial">
         <Reveal className="about-editorial__aside">
           <p className="eyebrow">Collectors helping collectors</p>

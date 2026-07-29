@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowUpRight, Gauge, ShieldCheck, Sparkles } from 'lucide-react'
 import { motion, useReducedMotion } from 'motion/react'
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CarMosaic } from '../components/CarMosaic'
 import { FaqSection } from '../components/FaqSection'
@@ -15,9 +15,27 @@ const HeroScene = lazy(() =>
   import('../components/three/HeroScene').then((module) => ({ default: module.HeroScene })),
 )
 
+function useLargeViewport() {
+  const [isLargeViewport, setIsLargeViewport] = useState(() =>
+    typeof window === 'undefined' ? false : window.matchMedia('(min-width: 641px)').matches,
+  )
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 641px)')
+    const updateViewport = () => setIsLargeViewport(mediaQuery.matches)
+
+    updateViewport()
+    mediaQuery.addEventListener('change', updateViewport)
+    return () => mediaQuery.removeEventListener('change', updateViewport)
+  }, [])
+
+  return isLargeViewport
+}
+
 export function HomePage() {
   const { openContact } = useContact()
   const reduceMotion = useReducedMotion()
+  const renderInteractiveScene = useLargeViewport() && !reduceMotion
 
   return (
     <motion.main
@@ -75,10 +93,17 @@ export function HomePage() {
             <span>Archive no. 067</span>
             <span>Interactive 3D</span>
           </div>
-          <Suspense fallback={<div className="home-hero__scene-loading" aria-hidden="true" />}>
-            <HeroScene carColor="#2c2c29" accentColor="#a53a31" ariaLabel="Interactive three-dimensional charcoal classic grand touring coupe" />
-          </Suspense>
-          <img className="home-hero__static-car" src="/assets/images/hero-car.png" alt="Charcoal 1960s grand touring coupe" />
+          {renderInteractiveScene ? (
+            <Suspense fallback={<div className="home-hero__scene-loading" aria-hidden="true" />}>
+              <HeroScene carColor="#2c2c29" accentColor="#a53a31" ariaLabel="Interactive three-dimensional charcoal classic grand touring coupe" />
+            </Suspense>
+          ) : (
+            <img
+              className="home-hero__static-car home-hero__static-car--visible"
+              src="/assets/images/hero-car.png"
+              alt="Charcoal 1960s grand touring coupe"
+            />
+          )}
           <div className="home-hero__stage-caption">
             <strong>1967 Grand Tourer</strong>
             <span>Move your pointer to explore</span>

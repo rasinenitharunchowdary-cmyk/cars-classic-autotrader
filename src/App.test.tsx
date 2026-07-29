@@ -43,4 +43,33 @@ describe('Car Marketplace', () => {
     expect(screen.getByRole('dialog', { name: /let's talk/i })).toBeInTheDocument()
     await waitFor(() => expect(screen.getByLabelText(/name/i)).toHaveFocus())
   })
+
+  it('filters the inventory by a typed search term', async () => {
+    const user = userEvent.setup()
+    renderApp('/cars')
+
+    await user.type(screen.getByRole('textbox', { name: /search/i }), 'Jaguar')
+
+    expect(screen.getByRole('heading', { level: 3, name: /1967 jaguar e-type/i })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { level: 3, name: /toyota 2000gt/i })).not.toBeInTheDocument()
+  })
+
+  it('keeps every vehicle gallery frame tied to the selected listing', () => {
+    renderApp('/cars/1967-toyota-2000gt')
+
+    const gallery = screen.getByRole('region', { name: /1967 toyota 2000gt photo gallery/i })
+    const galleryImages = Array.from(gallery.querySelectorAll('img'))
+
+    expect(galleryImages).toHaveLength(5)
+    expect(new Set(galleryImages.map((image) => image.getAttribute('src')))).toEqual(
+      new Set(['/assets/images/car-black.png']),
+    )
+  })
+
+  it('renders dynamic service content', () => {
+    renderApp('/services/shipping')
+
+    expect(screen.getByRole('heading', { level: 1, name: 'SHIPPING' })).toBeInTheDocument()
+    expect(screen.getByText(/door-to-door enclosed transport/i)).toBeInTheDocument()
+  })
 })
