@@ -34,7 +34,7 @@ export function StatsSection() {
           ))}
         </div>
         <Reveal className="stats-stage__car" delay={0.15}>
-          <img src="/assets/images/hero-car.png" alt="Charcoal 1960s grand touring coupe" loading="lazy" />
+          <img src="/assets/images/hero-car.webp" alt="Charcoal 1960s grand touring coupe" loading="lazy" />
         </Reveal>
       </div>
     </section>

@@ -62,7 +62,7 @@ describe('Car Marketplace', () => {
 
     expect(galleryImages).toHaveLength(5)
     expect(new Set(galleryImages.map((image) => image.getAttribute('src')))).toEqual(
-      new Set(['/assets/images/car-black.png']),
+      new Set(['/assets/images/car-black.webp']),
     )
   })
 

@@ -100,7 +100,7 @@ export function HomePage() {
                   <div className="home-hero__scene-loading" aria-hidden="true" />
                   <img
                     className="home-hero__static-car home-hero__static-car--visible"
-                    src="/assets/images/hero-car.png"
+                    src="/assets/images/hero-car.webp"
                     alt="Charcoal 1960s grand touring coupe"
                     fetchPriority="high"
                   />
@@ -112,7 +112,7 @@ export function HomePage() {
           ) : (
             <img
               className="home-hero__static-car home-hero__static-car--visible"
-              src="/assets/images/hero-car.png"
+              src="/assets/images/hero-car.webp"
               alt="Charcoal 1960s grand touring coupe"
               fetchPriority="high"
             />

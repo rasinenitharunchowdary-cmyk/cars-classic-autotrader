@@ -1909,7 +1909,7 @@
   color: var(--paper);
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.72)),
-    url('/assets/images/car-black.png') center / cover;
+    url('/assets/images/car-black.webp') center / cover;
 }
 
 .contact-modal__index {
